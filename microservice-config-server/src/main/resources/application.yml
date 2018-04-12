@@ -12,7 +12,9 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/buzuotaxuan/microservice-cloud-master/{application}/src/main/resources/
+          uri: https://github.com/buzuotaxuan/microservice-cloud-master/microservice-gateway
+          search-paths:
+          - /src/main/resources
           username: 
           password: 
     bus:
