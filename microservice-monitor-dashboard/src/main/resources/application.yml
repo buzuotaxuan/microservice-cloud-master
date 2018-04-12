@@ -1,0 +1,41 @@
+management: # spring-boot-starter-acturator 设置监控端口 监控端口和业务端口分开
+  port: 9004
+spring: 
+  messages:
+    encoding: UTF-8 
+  application:
+    name: microservice-monitor-dashboard
+  profiles:
+    active: dev
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+#  cloud:
+#    loadbalancer:
+#      retry:
+#        enabled: true
+      
+server: 
+  port: 8084
+  tomcat:
+    uri-encoding: UTF-8
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password123@localhost:8080/eureka
+  instance:
+    prefer-ip-address: true
+    
+turbine:
+  aggregator:
+    clusterConfig: default # 默认的cluster 这样可以省去配置多个Config的问题
+  appConfig: microservice-user-consumer #服务名, 多个用逗号分隔 
+  clusterNameExpression: "'default'"
+  combine-host-port: true          
+#feign:
+#  hystrix:
+#    enabled: true
+

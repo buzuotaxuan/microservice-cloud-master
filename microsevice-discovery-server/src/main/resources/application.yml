@@ -1,0 +1,37 @@
+spring:
+   application:
+      name: DISCOVERY-HA
+   profiles:
+    active: prod 
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: password123
+    
+server:
+      port: 8080
+      
+eureka: 
+  server:
+    response-cache-auto-expiration-in-seconds: 180
+    enable-self-preservation: false
+ #   eviction-interval-timer-in-ms: 3000
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://user:password123@localhost:8080/eureka
+#发送PUT请求到下面的地址进行服务下线      
+#http://127.0.0.1:8080/eureka/apps/
+#microservice-user-provider/
+#microservice-user-provider:192.168.0.28:8081/status?value=OUT_OF_SERVICE   
+
+#发送PUT请求到下面的地址进行服务上线
+#http://127.0.0.1:8080/eureka/apps/
+#microservice-user-provider/
+#microservice-user-provider:192.168.0.28:8081/status?value=UP   
+
+# 也可通过下面的方式下线 但是注意 由于心跳原因 下线后要马上停止服务 要不然会自动上线
+#http://127.0.0.1:8080/eureka/apps/MICROSERVICE-USER-PROVIDER/microservice-user-provider:192.168.0.28:8081     
