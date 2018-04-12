@@ -1,6 +1,8 @@
 management: # spring-boot-starter-acturator 设置监控端口 监控端口和业务端口分开
   port: 9000
 spring: 
+  profiles:
+    active: dev
   sleuth:
     sampler:
       percentage: 1.0
