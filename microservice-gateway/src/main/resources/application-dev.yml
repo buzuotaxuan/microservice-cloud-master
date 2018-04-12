@@ -1,0 +1,75 @@
+management: # spring-boot-starter-acturator 设置监控端口 监控端口和业务端口分开
+  port: 9002
+spring: 
+  messages:
+    encoding: UTF-8 
+  application:
+    name: microservice-gateway
+  profiles:
+    active: dev
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+  kafka:
+    producer:
+      bootstrap-servers:
+      - 119.29.8.74:9092
+  zipkin:
+    sender:
+      type: kafka
+    encoder: json-v2  
+    kafka:
+      topic: test
+
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+#  cloud:
+#    loadbalancer:
+#      retry:
+#        enabled: true
+      
+server: 
+  port: 8083
+  tomcat:
+    uri-encoding: UTF-8
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password123@localhost:8080/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+    metadata-map:
+      management.port: 9002
+
+#feign:
+#  hystrix:
+#    enabled: true
+
+# 禁用默认的熔断超时
+hystrix: 
+  command: 
+    default: 
+      execution: 
+        timeout: 
+          enabled: false
+          
+zuul:
+  #ignoredServices: microservice-consumer-movie-ribbon-with-hystrix
+  #ignoredServices: '*'
+ # prefix: /user
+  routes:
+    user-consumer:
+      path: /user/**
+      serviceId: microservice-user-consumer
+    user-provider:
+      path: /provider/**
+      serviceId: microservice-user-provider
+
