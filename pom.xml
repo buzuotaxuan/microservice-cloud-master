@@ -79,5 +79,6 @@
 		<module>microservice-gateway</module>
 		<module>microservice-monitor-dashboard</module>
 		<module>microservice-zipkin-dashboard</module>
+		<module>microservice-config-server</module>
 	</modules>
 </project>
