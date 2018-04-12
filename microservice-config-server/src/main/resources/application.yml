@@ -4,9 +4,9 @@ security:
   user:
     name: user
     password: password123
-    
 server:
-  port: 8080
+  port: 8086
+  
 spring:
   cloud:
     config:
@@ -15,14 +15,16 @@ spring:
           uri: https://github.com/buzuotaxuan/microservice-cloud-master/{application}/src/main/resources/
           username: 
           password: 
+    bus:
+      trace:
+        enabled: true
   application:
     name: microservice-config-server
   rabbitmq:
-    host: http://119.29.8.74
+    host: 119.29.8.74
     port: 5672
     username: guest
     password: guest
-
 eureka:
   client:
     serviceUrl:
