@@ -14,7 +14,7 @@ spring:
         git:
           uri: https://github.com/buzuotaxuan/microservice-cloud-master
           search-paths:
-          - '{application}'
+          - '{application}/src/main/resources'
           username: 
           password: 
     bus:
@@ -27,6 +27,9 @@ spring:
     port: 5672
     username: guest
     password: guest
+  profiles:
+    active: dev
+    
 eureka:
   client:
     serviceUrl:

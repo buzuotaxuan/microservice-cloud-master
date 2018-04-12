@@ -1,0 +1,23 @@
+spring:
+  messages:
+    encoding: UTF-8 
+  application:
+    name: microservice-user-provider
+    index: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: microservice-config-server
+      username: user
+      password: password123
+      profile: dev
+      label: master   # 当configserver的后端存储是Git时，默认就是master 
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    host: 119.29.8.74
+    port: 5672
+    username: guest
+    password: guest
