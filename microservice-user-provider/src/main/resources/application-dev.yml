@@ -40,17 +40,14 @@ spring:
                   bootstrap-servers:
                       - 119.29.8.74:9092
 
-#  kafka:
-#    producer: 
-#      bootstrap-servers:
-#          - 119.29.8.74:9092     
   zipkin:
     sender:
       type: kafka
     encoder: json-v2  
-    kafka1:
-      topic: test
-      
+    kafka:
+        producer: 
+           bootstrap-servers:
+               - 119.29.8.74:9092       
   http:
     encoding:
       force: true
