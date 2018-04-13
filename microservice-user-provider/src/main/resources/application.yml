@@ -1,19 +1,52 @@
 management: # spring-boot-starter-acturator 设置监控端口 监控端口和业务端口分开
   port: 9000
 spring: 
+  profiles:
+    active: dev
   sleuth:
     sampler:
       percentage: 1.0
-  kafka:
-    producer:
-      bootstrap-servers:
-      - 119.29.8.74:9092
+  cloud:
+    bus:
+      trace:
+        enabled: true
+      destination: configserver
+    stream:
+      default-binder: rabbit1
+      
+      bindings:
+#        input:
+#          destination: foo
+#          binder: rabbit1
+        springCloudBusOutput:
+          destination: configserver
+          binder: rabbit1
+      binders:
+        rabbit1:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 119.29.8.74
+                port: 5672
+                username: guest
+                password: guest
+        kafka1:
+          type: kafka
+          environment:
+            spring:
+              kafka:
+                producer: 
+                  bootstrap-servers:
+                      - 119.29.8.74:9092
+     
   zipkin:
     sender:
       type: kafka
     encoder: json-v2  
-    kafka:
+    kafka1:
       topic: test
+      
   http:
     encoding:
       force: true

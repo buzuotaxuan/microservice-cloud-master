@@ -83,11 +83,6 @@
 	<logger name="springfox.documentation" additivity="false">
 		<level value="ERROR" />
 	</logger>
-	<root level="INFO">
-		<appender-ref ref="stdout" />
-		<appender-ref ref="file—info" />
-		<appender-ref ref="file—error" />
-	</root>
 	<!-- 开发环境下的日志配置 -->
 	<springProfile name="dev">
 		<root level="INFO">
