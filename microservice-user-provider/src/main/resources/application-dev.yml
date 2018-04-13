@@ -48,7 +48,7 @@ spring:
     sender:
       type: kafka
     encoder: json-v2  
-    kafka:
+    kafka1:
       topic: test
       
   http:
