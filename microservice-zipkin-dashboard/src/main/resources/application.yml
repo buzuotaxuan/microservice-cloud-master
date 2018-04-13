@@ -29,7 +29,7 @@ zipkin:
   collector:
      kafka: 
        zookeeper: 119.29.8.74
-       topic: test
+       topic: zipkin
   storage:
     type: elasticsearch
     elasticsearch:
