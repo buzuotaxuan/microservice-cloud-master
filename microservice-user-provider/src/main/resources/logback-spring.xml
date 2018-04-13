@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="false" scanPeriod="10 seconds">
- 	
- 	<property name="PROJECT_NAME" value="microservice-user-provider" />
+
+	<property name="PROJECT_NAME" value="microservice-user-provider" />
 	<property name="LOG_HOME" value="/data/baoping-api/logs/" />
 	<!-- 控制台输出 -->
-	<appender name="stdout"
-		class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>
-				%X{sessionId} - %date [%thread] %-5level %logger{80} - %msg%n
+				%X{sessionId} - %date [%thread] %-5level %logger{80} -
+				%msg%n
 			</pattern>
 		</encoder>
 	</appender>
-	<!-- 
-		如果返回DENY，那么记录事件立即被抛弃，不再经过剩余过滤器；
-		
-		如果返回NEUTRAL，那么有序列表里的下一个过滤器会接着处理记录事件；
-		
-		如果返回ACCEPT，那么记录事件被立即处理，不再经过剩余过滤器。
-	 -->
+	<!-- 如果返回DENY，那么记录事件立即被抛弃，不再经过剩余过滤器； 如果返回NEUTRAL，那么有序列表里的下一个过滤器会接着处理记录事件； 
+		如果返回ACCEPT，那么记录事件被立即处理，不再经过剩余过滤器。 -->
 	<!-- 时间滚动输出 level为 INFO 日志 -->
 	<appender name="file—info"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -27,8 +22,7 @@
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>NEUTRAL</onMismatch>
 		</filter>
-		<rollingPolicy
-			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<FileNamePattern>
 				${LOG_HOME}/logs/info.%d{yyyy-MM-dd}.log
 			</FileNamePattern>
@@ -36,7 +30,8 @@
 		</rollingPolicy>
 		<encoder>
 			<pattern>
-				%X{sessionId} - %date [%thread] %-5level %logger{80} - %msg%n
+				%X{sessionId} - %date [%thread] %-5level %logger{80} -
+				%msg%n
 			</pattern>
 		</encoder>
 	</appender>
@@ -49,8 +44,7 @@
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>NEUTRAL</onMismatch>
 		</filter>
-		<rollingPolicy
-			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<FileNamePattern>
 				${LOG_HOME}/logs/warn.%d{yyyy-MM-dd}.log
 			</FileNamePattern>
@@ -58,7 +52,8 @@
 		</rollingPolicy>
 		<encoder>
 			<pattern>
-				%X{sessionId} - %date [%thread] %-5level %logger{80} - %msg%n
+				%X{sessionId} - %date [%thread] %-5level %logger{80} -
+				%msg%n
 			</pattern>
 		</encoder>
 	</appender>
@@ -71,8 +66,7 @@
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
 		</filter>
-		<rollingPolicy
-			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<FileNamePattern>
 				${LOG_HOME}/logs/error.%d{yyyy-MM-dd}.log
 			</FileNamePattern>
@@ -80,32 +74,37 @@
 		</rollingPolicy>
 		<encoder>
 			<pattern>
-				%X{sessionId} - %date [%thread] %-5level %logger{80} - %msg%n
+				%X{sessionId} - %date [%thread] %-5level %logger{80} -
+				%msg%n
 			</pattern>
 		</encoder>
 	</appender>
-	
+
 	<logger name="springfox.documentation" additivity="false">
 		<level value="ERROR" />
 	</logger>
-	
-	  <!-- 开发环境下的日志配置 -->
-    <springProfile name="dev">
-       	<root level="INFO">
-		<appender-ref ref="stdout" /> 
-		<appender-ref ref="file—info" />
-		<appender-ref ref="file—error" />
-		</root>
-    </springProfile>
-
-    <!-- 生产环境下的日志配置 -->
-    <springProfile name="product">
-       	<root level="INFO">
-		<appender-ref ref="stdout" /> 
+	<root level="INFO">
+		<appender-ref ref="stdout" />
 		<appender-ref ref="file—info" />
 		<appender-ref ref="file—error" />
 	</root>
-    </springProfile>
-	
+	<!-- 开发环境下的日志配置 -->
+	<springProfile name="dev">
+		<root level="INFO">
+			<appender-ref ref="stdout" />
+			<appender-ref ref="file—info" />
+			<appender-ref ref="file—error" />
+		</root>
+	</springProfile>
+
+	<!-- 生产环境下的日志配置 -->
+	<springProfile name="product">
+		<root level="INFO">
+			<appender-ref ref="stdout" />
+			<appender-ref ref="file—info" />
+			<appender-ref ref="file—error" />
+		</root>
+	</springProfile>
+
 
 </configuration>
