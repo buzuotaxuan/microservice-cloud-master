@@ -40,10 +40,6 @@ spring:
                   bootstrap-servers:
                       - 119.29.8.74:9092
      
-#  kafka:
-#    producer:
-#      bootstrap-servers:
-#      - 119.29.8.74:9092
   zipkin:
     sender:
       type: kafka
