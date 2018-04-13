@@ -4,7 +4,9 @@ server:
     uri-encoding: UTF-8
 management: # spring-boot-starter-acturator 设置监控端口 监控端口和业务端口分开
   port: 9000
-  
+  security:
+    enabled: false
+
 spring:
   messages:
     encoding: UTF-8 

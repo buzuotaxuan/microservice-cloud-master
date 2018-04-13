@@ -17,8 +17,7 @@ spring:
           - '{application}/src/main/resources'
           username: 
           password: 
-    bus: 
-      destination: configserver
+    bus:
       trace:
         enabled: true
   application:

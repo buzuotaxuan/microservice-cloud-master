@@ -3,6 +3,7 @@ spring:
       name: DISCOVERY-HA
    profiles:
     active: prod 
+    
 security:
   basic:
     enabled: true
@@ -12,11 +13,12 @@ security:
     
 server:
       port: 8080
+
       
 eureka: 
   server:
     response-cache-auto-expiration-in-seconds: 180
-    enable-self-preservation: false
+ #   enable-self-preservation: false
  #   eviction-interval-timer-in-ms: 3000
   client:
     register-with-eureka: false
