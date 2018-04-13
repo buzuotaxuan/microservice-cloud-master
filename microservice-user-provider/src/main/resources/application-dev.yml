@@ -12,13 +12,13 @@ spring:
         enabled: true
       destination: configserver
     stream:
-#      default-binder: rabbit1
+      default-binder: rabbit1
       
       bindings:
 #        input:
 #          destination: foo
 #          binder: rabbit1
-        output:
+        springCloudBusOutput:
           destination: configserver
           binder: rabbit1
       binders:
@@ -48,8 +48,9 @@ spring:
     sender:
       type: kafka
     encoder: json-v2  
-    kafka:
+    kafka1:
       topic: test
+      
   http:
     encoding:
       force: true
