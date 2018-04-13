@@ -10,9 +10,9 @@ spring:
     bus:
       trace:
         enabled: true
-#      destination: configserver
+      destination: configserver
     stream:
-      default-binder: rabbit1
+#      default-binder: rabbit1
       
       bindings:
 #        input:
