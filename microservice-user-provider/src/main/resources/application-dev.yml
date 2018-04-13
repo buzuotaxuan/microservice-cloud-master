@@ -31,15 +31,22 @@ spring:
                 port: 5672
                 username: guest
                 password: guest
-        kafka1:
-          type: kafka
-          environment:
-            spring:
-              kafka:
-                producer: 
-                  bootstrap-servers:
-                      - 119.29.8.74:9092
-     
+#        kafka1:
+#          type: kafka
+#          environment:
+#            spring:
+#              kafka:
+#                producer: 
+#                  bootstrap-servers:
+#                      - 119.29.8.74:9092
+  kafka1:
+    type: kafka
+    environment:
+      spring:
+        kafka:
+          producer: 
+            bootstrap-servers:
+                - 119.29.8.74:9092     
   zipkin:
     sender:
       type: kafka

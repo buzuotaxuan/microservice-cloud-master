@@ -1,3 +1,9 @@
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: password123
 spring: 
   messages:
     encoding: UTF-8 
