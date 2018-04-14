@@ -23,14 +23,22 @@ spring:
       destination: configserver # 注意这里 的名字是MQ 中的topic 一定要和监听的客户端一致
     stream:
       default-binder: rabbit1
+      rabbit: 
+           bindings: 
+              springCloudBusInput: 
+                  consumer: 
+                    durableSubscription: false
       bindings:
 #        input:
 #          destination: foo
 #          binder: rabbit1
-        springCloudBusOutput:
+        springCloudBusInput:  #consumer
           destination: configserver
           binder: rabbit1
           group: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+        springCloudBusOutput: #producer
+          destination: configserver
+          binder: rabbit1
           
       binders:
         rabbit1:
