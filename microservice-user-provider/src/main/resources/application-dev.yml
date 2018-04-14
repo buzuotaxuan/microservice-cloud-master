@@ -18,9 +18,11 @@ spring:
 #        input:
 #          destination: foo
 #          binder: rabbit1
-        springCloudBusOutput:
+        springCloudBusInput:
           destination: configserver
           binder: rabbit1
+          group: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+          
       binders:
         rabbit1:
           type: rabbit
