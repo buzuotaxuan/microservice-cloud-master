@@ -34,4 +34,4 @@ eureka:
     status-page-url-path: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
     lease-expiration-duration-in-seconds: 90
     metadata-map:
-      management.port: 9000
+      management.port: 9001
