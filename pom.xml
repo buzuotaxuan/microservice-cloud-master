@@ -80,5 +80,6 @@
 		<module>microservice-monitor-dashboard</module>
 		<module>microservice-zipkin-dashboard</module>
 		<module>microservice-config-server</module>
+		<module>microservice-cloud-core</module>
 	</modules>
 </project>
