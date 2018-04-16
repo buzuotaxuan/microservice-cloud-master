@@ -12,7 +12,7 @@ spring:
     name: microservice-user-consumer
     index: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
   profiles:
-    active: dev
+    active: test
   sleuth:
     sampler:
       percentage: 1.0

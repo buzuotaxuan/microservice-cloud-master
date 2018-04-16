@@ -77,6 +77,11 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
+		 <dependency>
+            <groupId>com.luckin</groupId>
+            <artifactId>microservice-cloud-core</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
 	</dependencies>
 
 </project>
