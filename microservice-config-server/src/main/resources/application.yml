@@ -9,6 +9,8 @@ server:
   
 spring:
   cloud:
+#    bootstrap: 
+#      enabled: false
     config:
       server:
         git:
@@ -21,6 +23,8 @@ spring:
       trace:
         enabled: true
       destination: configserver # 注意这里 的名字是MQ 中的topic 一定要和监听的客户端一致
+      refresh:
+        enabled: false
     stream:
       default-binder: rabbit1
       rabbit: 
