@@ -1,8 +1,8 @@
 management: # spring-boot-starter-acturator 设置监控端口 监控端口和业务端口分开
-  port: 9000
+  port: 9001
   
 server: 
-  port: 8081
+  port: 8082
   tomcat:
     uri-encoding: UTF-8
 spring:
