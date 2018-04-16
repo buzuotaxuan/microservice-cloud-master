@@ -14,8 +14,6 @@ spring:
     name: microservice-user-provider
     index: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
   cloud: 
-#    bootstrap: 
-#      enabled: false
     config:
       discovery:
         enabled: true

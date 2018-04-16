@@ -90,14 +90,6 @@
 		<level value="ERROR" />
 	</logger>
 	
-	<logger name="org.springframework.context" >
-		<level value="TRACE" />
-	</logger>
-	
-		<logger name="org.springframework.boot" >
-		<level value="TRACE" />
-	</logger>
-	
 	  <!-- 开发环境下的日志配置 -->
     <springProfile name="dev">
        	<root level="INFO">
