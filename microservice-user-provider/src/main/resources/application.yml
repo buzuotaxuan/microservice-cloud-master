@@ -1,5 +1,10 @@
 management: # spring-boot-starter-acturator 设置监控端口 监控端口和业务端口分开
   port: 9000
+  
+server: 
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
 spring:
   messages:
     encoding: UTF-8 
@@ -11,21 +16,28 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
-  cloud:
+  cloud:    
     bus:
       trace:
         enabled: true
       destination: configserver
     stream:
       default-binder: rabbit1
+      rabbit: 
+           bindings: 
+              springCloudBusInput: 
+                  consumer: 
+                    durableSubscription: false
+                    
       
       bindings:
-#        input:
-#          destination: foo
-#          binder: rabbit1
-        springCloudBusOutput:
+        springCloudBusInput: #consumer
           destination: configserver
           binder: rabbit1
+          group: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+#        springCloudBusOutput: #producer
+#          destination: configserver
+#          binder: rabbit1  
       binders:
         rabbit1:
           type: rabbit
@@ -44,13 +56,17 @@ spring:
                 producer: 
                   bootstrap-servers:
                       - 119.29.8.74:9092
-     
+
+  kafka:
+    producer: 
+      bootstrap-servers:
+          - 119.29.8.74:9092     
   zipkin:
     sender:
       type: kafka
     encoder: json-v2  
-    kafka1:
-      topic: test
+    kafka:
+      topic: zipkin
       
   http:
     encoding:
@@ -88,11 +104,7 @@ spring:
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       # 合并多个DruidDataSource的监控数据
       #useGlobalDataSourceStat: true
-      
-server: 
-  port: 8081
-  tomcat:
-    uri-encoding: UTF-8
+
     
 eureka:
   client:
@@ -100,7 +112,7 @@ eureka:
       defaultZone: http://user:password123@localhost:8080/eureka
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
     lease-renewal-interval-in-seconds: 30
     status-page-url-path: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
     lease-expiration-duration-in-seconds: 90
