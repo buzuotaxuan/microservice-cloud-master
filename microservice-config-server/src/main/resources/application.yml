@@ -8,9 +8,10 @@ server:
   port: 8086
   
 spring:
+  profiles:
+    active: dev
+    
   cloud:
-#    bootstrap: 
-#      enabled: false
     config:
       server:
         git:
@@ -63,8 +64,7 @@ spring:
     username: guest
     password: guest
     
-  profiles:
-    active: dev
+
     
 eureka:
   client:
