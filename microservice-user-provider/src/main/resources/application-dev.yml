@@ -36,9 +36,9 @@ spring:
           destination: configserver
           binder: rabbit1
           group: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
-        springCloudBusOutput: #producer
-          destination: configserver
-          binder: rabbit1  
+#        springCloudBusOutput: #producer
+#          destination: configserver
+#          binder: rabbit1  
       binders:
         rabbit1:
           type: rabbit

@@ -34,9 +34,6 @@ spring:
                   consumer: 
                     durableSubscription: false
       bindings:
-#        input:
-#          destination: foo
-#          binder: rabbit1
         springCloudBusInput:  #consumer
           destination: configserver
           binder: rabbit1
