@@ -32,7 +32,7 @@ spring:
 #        input:
 #          destination: foo
 #          binder: rabbit1
-        springCloudBusInput:
+        springCloudBusInput: #consumer
           destination: configserver
           binder: rabbit1
           group: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
