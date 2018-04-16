@@ -16,6 +16,7 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
+  cloud:    
     bus:
       trace:
         enabled: true
@@ -27,11 +28,9 @@ spring:
               springCloudBusInput: 
                   consumer: 
                     durableSubscription: false
+                    
       
       bindings:
-#        input:
-#          destination: foo
-#          binder: rabbit1
         springCloudBusInput: #consumer
           destination: configserver
           binder: rabbit1
